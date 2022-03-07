@@ -1,0 +1,29 @@
+.container {
+        width: 98%;
+        margin: 0 auto;}
+h1
+{color: rgb(52, 52, 216);
+font-style: inherit ;
+font-size: 10px;}
+h2 {
+    color: rgb(5, 34, 59);
+    font-style: inherit ;
+    font-size: 20px;}
+table{
+    border-collapse: collapse;
+    width: 50%;
+}
+th {
+    border: 1px solid blue;
+    background-color: aliceblue;
+    padding: 5px;
+}
+td {
+    border: 1px solid blue;
+    padding: 4px;
+}
+caption {
+    color: black;
+    font-weight: bold;
+    padding: 5px;
+}
