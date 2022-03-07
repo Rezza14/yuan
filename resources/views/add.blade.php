@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{asset('style.css')}}"/>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
 
-
+    <p>Reza</p>
 
 
         <div class="container">
