@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\pokemodel;
+use App\Models\PokeModel;
+use Illuminate\Http\Request;
 
-class pokecontroller extends Controller
+class PokeController extends Controller
 {
+    private PokeModel $pokemodel;
+
     public function __construct(){
-        $this->pokemodel = new pokemodel();
+        $this->pokemodel = new PokeModel();
     }
 
     public function poke()
     {
         $data = [
-            'poke' => $this->pokemodel->poker(),
+            'poke' => $this->pokemodel->get(),
         ];
         return view('data_siswa',  $data);
     }
@@ -35,9 +37,9 @@ class pokecontroller extends Controller
         return view('add');
     }
 
-    public function insert()
+    public function insert(Request $request)
     {
-        Request()->validate([
+        $request->validate([
             'nis' => 'required|unique:siswa_tbl,nis|min:5|max:11',
             'nama' => 'required',
             'hobi' => 'required',
@@ -57,14 +59,14 @@ class pokecontroller extends Controller
         ]);
 
         $data = [
-            'nis' => Request() -> nis,
-            'nama' => Request() -> nama,
-            'hobi' => Request() -> hobi,
-            'umur' => Request() -> umur,
-            'alamat' => Request() -> alamat,
+            'nis' => $request->nis,
+            'nama' => $request->nama,
+            'hobi' => $request->hobi,
+            'umur' => $request->umur,
+            'alamat' => $request->alamat,
         ];
 
-        $this->pokemodel->adddata($data);
+        $this->pokemodel->create($data);
         return redirect()->route('poke')->with('success', 'Data berhasil disimpan !!');
     }
 
@@ -80,9 +82,9 @@ class pokecontroller extends Controller
 
     }
 
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        Request()->validate([
+        $request->validate([
             'nis' => 'required|min:5|max:11',
             'nama' => 'required',
             'hobi' => 'required',
@@ -102,20 +104,24 @@ class pokecontroller extends Controller
         ]);
 
         $data = [
-            'nis' => Request() -> nis,
-            'nama' => Request() -> nama,
-            'hobi' => Request() -> hobi,
-            'umur' => Request() -> umur,
-            'alamat' => Request() -> alamat,
+            'nis' => $request->nis,
+            'nama' => $request->nama,
+            'hobi' => $request->hobi,
+            'umur' => $request->umur,
+            'alamat' => $request->alamat,
         ];
 
-        $this->pokemodel->editdata($id, $data);
+        $pokemodel = $this->pokemodel->find($id);
+        $pokemodel->update($data);
         return redirect()->route('poke')->with('success', 'Data berhasil diupdate !!');
     }
 
     public function delete($id)
     {
-        $this->pokemodel->deletedata($id);
+        if (!$this->pokemodel->find($id)) {
+            abort(404);
+        }
+        $this->pokemodel->find($id)->delete();
         return redirect()->route('poke')->with('success', 'Data berhasil dihapus !!');
     }
 

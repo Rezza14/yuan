@@ -1,9 +1,8 @@
 <?php
 
+use App\Http\Controllers\PokeController;
+use App\Http\Controllers\YuanController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\yuancontroller;
-use App\Http\Controllers\pokecontroller;
-use App\Http\Controllers\gurucontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,14 +15,12 @@ use App\Http\Controllers\gurucontroller;
 |
 */
 
-Route::get('/',[yuancontroller::class,'index']);
-Route::get('/home/about/{id}',[yuancontroller::class,'tentang']);
-Route::get('/datasiswa',[pokecontroller::class,'poke'])->name('poke');
-Route::get('/detail/{id}',[pokecontroller::class,'detail']);
-Route::get('/add',[pokecontroller::class,'add']);
-Route::post('/insert',[pokecontroller::class,'insert']);
-Route::get('/edit/{id}',[pokecontroller::class,'edit']);
-Route::post('/update/{id}',[pokecontroller::class,'update']);
-Route::get('/delete/{id}',[pokecontroller::class,'delete']);
-
-Route::get('/dataguru',[gurucontroller::class,'index']);
+Route::get('/', [YuanController::class, 'index']);
+Route::get('/home/about/{id}', [YuanController::class, 'tentang']);
+Route::get('/datasiswa', [PokeController::class, 'poke'])->name('poke');
+Route::get('/detail/{id}', [PokeController::class, 'detail']);
+Route::get('/add', [PokeController::class, 'add']);
+Route::post('/insert', [PokeController::class, 'insert']);
+Route::get('/edit/{id}', [PokeController::class, 'edit']);
+Route::post('/update/{id}', [PokeController::class, 'update']);
+Route::get('/delete/{id}', [PokeController::class, 'delete']);

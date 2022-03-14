@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-
-class yuancontroller extends Controller
+class YuanController extends Controller
 {
 
     public function index()
