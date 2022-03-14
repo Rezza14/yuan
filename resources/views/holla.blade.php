@@ -7,20 +7,19 @@
     <title>Holla</title>
 </head>
 <body>
-    <link rel="stylesheet" href="{{asset('style.css')}}"/>
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
+<link rel="stylesheet" href="{{asset('style.css')}}"/>
+<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
 
 
-        <div class="container">
-       <h1>Holla</h1>
+<div class="container">
+    <h1>Holla</h1>
 
-       <h2>{{ $nama_siswa }}</h2>
-       <h2>{{ $kelas }}</h2>
-
-
-       <a href="/datasiswa" class="btn btn-sm btn-primary">Lihat Data Siswa</a>
+    <h2>{{ $nama_siswa }}</h2>
+    <h2>{{ $kelas }}</h2>
 
 
-    </div>
+    <a href="{{ url('datasiswa') }}" class="btn btn-sm btn-primary">Lihat Data Siswa</a>
+
+</div>
 </body>
 </html>

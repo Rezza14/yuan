@@ -8,55 +8,53 @@
 </head>
 <body>
 
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
+<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
 
-    <div class="container">
-        <h1>Data Siswa</h1>
+<div class="container">
+    <h1>Data Siswa</h1>
 
-        <a href="/" class="btn btn-sm btn-primary">Back</a>
-        <a href="/add" class="btn btn-sm btn-primary">Add</a><br>
-        <br>
+    <a href="{{ url('/') }}" class="btn btn-sm btn-primary">Back</a>
+    <a href="{{ url('add') }}" class="btn btn-sm btn-primary">Add</a><br>
+    <br>
 
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>NIS</th>
-                    <th>Nama</th>
-                    <th>Hobi</th>
-                    <th>Umur</th>
-                    <th>Alamat</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>NIS</th>
+            <th>Nama</th>
+            <th>Hobi</th>
+            <th>Umur</th>
+            <th>Alamat</th>
+            <th>Action</th>
+        </tr>
+        </thead>
 
-            <tbody>
-                    <?php $no=1; ?>
-                    @foreach ($poke as $data)
-                    <tr>
-                        <td>{{ $no ++}}</td>
-                        <td>{{$data -> nis}}</td>
-                        <td>{{$data -> nama}}</td>
-                        <td>{{$data -> hobi}}</td>
-                        <td>{{$data -> umur}}</td>
-                        <td>{{$data -> alamat}}</td>
-                        <td> <a href="/detail/{{ $data->id }}" class="btn btn-sm btn-success">Detail</a>
+        <tbody>
+        <?php $no = 1; ?>
+        @foreach ($poke as $data)
+            <tr>
+                <td>{{ $no ++}}</td>
+                <td>{{$data -> nis}}</td>
+                <td>{{$data -> nama}}</td>
+                <td>{{$data -> hobi}}</td>
+                <td>{{$data -> umur}}</td>
+                <td>{{$data -> alamat}}</td>
+                <td><a href="{{ url('/detail/'.$data->id) }}" class="btn btn-sm btn-success">Detail</a>
 
-                            <a href="/edit/{{ $data->id}}" class="btn btn-sm btn-warning">Edit</a>
-                            <a href="{{ url('delete/' . $data->id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus data?')">Delete</a>
-
-
+                    <a href="{{ url('/edit/'.$data->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{{ url('delete/' . $data->id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus data?')">Delete</a>
 
 
-                        </td>
-                    </tr>
-                    @endforeach
-            </tbody>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
 
-        </div>
-        </table>
+    </table>
+</div>
 
-            @include('sweetalert::alert')
+@include('sweetalert::alert')
 
 </body>
 </html>

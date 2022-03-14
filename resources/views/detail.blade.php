@@ -1,13 +1,13 @@
-    <title>Detail</title>
+<title>Detail</title>
 <body>
-    <link rel="stylesheet" href="{{asset('style.css')}}"/>
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
+<link rel="stylesheet" href="{{asset('style.css')}}"/>
+<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
 
 
-        <div class="container">
-        <h1>Detail Data</h1>
+<div class="container">
+    <h1>Detail Data</h1>
 
-        <table class="table">
+    <table class="table">
         <tr>
             <th width="100px">NIS</th>
             <th width="30px">:</th>
